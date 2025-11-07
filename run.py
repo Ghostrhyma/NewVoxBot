@@ -1,6 +1,5 @@
 from aiogram import Bot, Dispatcher
 from aiohttp import web
-from aiohttp_socks import ProxyConnector
 from dotenv import load_dotenv
 from aiogram.client.session.aiohttp import AiohttpSession
 
@@ -12,6 +11,9 @@ from app.handlers import router
 
 load_dotenv()
 
+bot = Bot(token=str(os.getenv("BOT_TOKEN")))
+dp = Dispatcher()
+dp.include_router(router)
 
 async def handle(request):
     return web.Response(text="Bot is alive")
@@ -27,14 +29,7 @@ async def start_web_server():
     print("✅ Bot started and server is running...")
 
 async def main():
-    proxy_url = "socks5://127.0.0.1:1080"
-
-    session = AiohttpSession(proxy=proxy_url)
-
-    bot = Bot(token=str(os.getenv("BOT_TOKEN")), session=session)
-    dp = Dispatcher()
-    dp.include_router(router)
-
+    await start_web_server()
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
