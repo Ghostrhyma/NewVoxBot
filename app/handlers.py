@@ -28,7 +28,7 @@ async def get_voice(message: Message, state: FSMContext):
             await message.answer("Вы превысили допустимую длину сообщения")
         else:
             await state.update_data(file_id=message.voice.file_id)
-            id_data = state.get_data()
+            id_data = await state.get_data()
             fl_id = id_data["file_id"]
 
             await message.answer(f"ID гс - {fl_id}")
