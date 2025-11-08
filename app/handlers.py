@@ -52,7 +52,7 @@ async def get_voice(message: Message, state: FSMContext):
                 "username": username
             }
 
-            await fjson.add_to_json("voxes.json", vox)
+            await fjson.add_to_json("app/voxes.json", vox)
             await message.answer("Вы создали новый Vox!", reply_markup=kb.main_keyboard)
             await state.clear()
     except AttributeError:
@@ -62,5 +62,5 @@ async def get_voice(message: Message, state: FSMContext):
 
 @router.message(F.text == kb.VoxFeedKeyBoard.NEXT_VOX)
 async def next_vox(message: Message):
-    voxes = await fjson.read_from_json("voxes.json")
+    voxes = await fjson.read_from_json("app/voxes.json")
     await message.answer_voice(voice=voxes[0]["file_id"], caption=voxes[0]["caption"], reply_markup=kb.feed_keyboard)
