@@ -44,7 +44,7 @@ async def get_voice(message: Message, state: FSMContext):
             full_name = message.from_user.full_name
             username = message.from_user.username
 
-            voice_caption = f"{full_name}\n{username}"
+            voice_caption = f"{full_name}\n@{username}"
 
             vox = {
                 "file_id": fl_id,

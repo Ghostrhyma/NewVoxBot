@@ -26,7 +26,9 @@ input_field_placeholder="Выберите действие")
 
 to_feed_from_create = ReplyKeyboardMarkup(keyboard=[
     [KeyboardButton(text=MainKeyboard.TO_FEED)]
-])
+],
+resize_keyboard=True,
+input_field_placeholder="Выберите действие")
 
 
 main_keyboard = ReplyKeyboardMarkup(keyboard=[
