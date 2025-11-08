@@ -63,4 +63,8 @@ async def get_voice(message: Message, state: FSMContext):
 @router.message(F.text == kb.VoxFeedKeyBoard.NEXT_VOX)
 async def next_vox(message: Message):
     voxes = await fjson.read_from_json("app/voxes.json")
-    await message.answer_voice(voice=voxes[0]["file_id"], caption=voxes[0]["caption"], reply_markup=kb.feed_keyboard)
+
+    if not voxes:
+        await message.answer("Vox-Лента пока что пуста😔")
+    else:
+        await message.answer_voice(voice=voxes[0]["file_id"], caption=voxes[0]["caption"], reply_markup=kb.feed_keyboard)

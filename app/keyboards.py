@@ -20,7 +20,9 @@ vox_feed_keyboard = ReplyKeyboardMarkup(keyboard=[
     [KeyboardButton(text=VoxFeedKeyBoard.NEXT_VOX),
      KeyboardButton(text=VoxFeedKeyBoard.TO_CREATE),
     ]
-])
+],
+resize_keyboard=True,
+input_field_placeholder="Выберите действие")
 
 to_feed_from_create = ReplyKeyboardMarkup(keyboard=[
     [KeyboardButton(text=MainKeyboard.TO_FEED)]
