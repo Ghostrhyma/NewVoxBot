@@ -1,7 +1,6 @@
 from aiogram import Bot, Dispatcher
 from aiohttp import web
 from dotenv import load_dotenv
-from aiogram.client.session.aiohttp import AiohttpSession
 
 import sys, os
 import asyncio, logging
